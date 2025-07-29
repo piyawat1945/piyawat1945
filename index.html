@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ครูเอก!</title>
+    <style>
+        /* ตัวแปรสีสำหรับใช้ทั่วเว็บ */
+        :root {
+            --primary-color: #2D61E3;
+            --secondary-color: #d6da00;
+            --bg-color: #ce87fd;
+            --text-color: #ffffff;
+        }
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--bg-color);
+            text-align: center;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-inline: 10;
+        }
+        
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--primary-color);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .image-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .teacher-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid var(--secondary-color);
+        }
+        
+        h1 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            font-size: 2.5rem;
+        }
+        
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            color: var(--text-color);
+        }
+        
+        .signature {
+            font-style: italic;
+            margin-top: 30px;
+            color: var(--text-color);
+            font-size: 1.2rem;
+        }
+        
+        .balloon {
+            font-size: 30px;
+            margin: 10px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary-color);
+            opacity: 0;
+            animation: confetti-fall 5s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% { 
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .container, .image-container {
+                max-width: 90%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <!-- ใช้ฟอนต์ไทยจาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <!-- บอลลูนลอยได้ -->
+            <div>
+                <span class="balloon">🎈</span>
+                <span class="balloon" style="animation-delay: 0.5s;">🎉</span>
+                <span class="balloon" style="animation-delay: 1s;">🎂</span>
+                <span class="balloon" style="animation-delay: 1.5s;">✨</span>
+            </div>
+            
+            <h1>สุขสันต์วันเกิด ครูเอก!</h1>
+            
+            <div class="message">
+                <p>ในวันเกิดวันนี้ ผมขอให้ครูเอกมีความสุข เป็นที่รักของนักเรียน นักเรียนเชื่อฟังคำสอน และมีแรงบันดาลใจในการสอนตลอดไป</p>
+                
+                <p>ขอบคุณสำหรับความทุ่มเทและความใส่ใจที่คุณครูมีให้พวกเรามาตลอด 
+                เราจะเป็นนักเรียนที่ดีและตั้งใจเรียนเพื่อตอบแทนคุณครูครับ</p>
+            </div>
+            
+            <div class="signature">
+                <p>ด้วยความเคารพอย่างสูง</p>
+                <p>จาก นายปิบะวัฒน์ ทรัพย์กิจการ</p>
+                <p>วันที่ 28 กรกฎาคม 2568</p>
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <!-- ใส่รูปครูเอกที่นี่ -->
+            <img src="aekmaley.jpg" alt="รูปครูเอก" class="teacher-image">
+            <!-- ถ้ามีรูปจริง ให้เปลี่ยนลิงก์ด้านบนเป็น path ของรูปภาพจริง -->
+        </div>
+    </div>
+
+    <!-- สคริปต์สำหรับแสดงวันที่ปัจจุบันและ confetti -->
+    <script>
+        // แสดงวันที่ปัจจุบัน
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('th-TH', options);
+        
+        // สร้าง confetti
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            
+            // สุ่มตำแหน่งและสี
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.width = (Math.random() * 10 + 5) + 'px';
+            confetti.style.height = (Math.random() * 10 + 5) + 'px';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.body.appendChild(confetti);
+            
+            // ลบ confetti หลังจากอนิเมชันเสร็จ
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+        
+        // สร้าง confetti ทุกๆ 100ms
+        setInterval(createConfetti, 100);
+        
+        // สร้าง confetti ตอนโหลดหน้า
+        for (let i = 0; i < 50; i++) {
+            setTimeout(createConfetti, i * 100);
+        }
+    </script>
+</body>
+</html>
